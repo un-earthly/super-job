@@ -8,10 +8,13 @@ exports.verifyJwt = (req, res, next) => {
     if (token) {
         try {
             const decoded = jwt.verify(token, process.env.JWT)
-            req.user = decoded
+            req.userEmail = decoded.email
             next()
         } catch (err) {
             return res.status(401).json({ err })
         }
+    }
+    else {
+        res.send({ err: "no token found" })
     }
 }

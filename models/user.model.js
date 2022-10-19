@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const emailvalidator = require("../utils/emailvalidator");
 var userSchema = new mongoose.Schema({
     email: {
         type: String,
@@ -8,9 +9,7 @@ var userSchema = new mongoose.Schema({
         unique: true,
         required: [true, 'Email address is required'],
         validate: {
-            validator: function (v) {
-                return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
-            },
+            validator: v => emailvalidator(v),
             message: "Please enter a valid email"
         },
     },

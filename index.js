@@ -18,7 +18,7 @@ app.use(express.json())
 
 app.get("/", landingRoute)
 app.use("/api/jobs", jobRoutes)
-app.use("/api/manager", managerRoutes)
+app.use("/api/manager/jobs", managerRoutes)
 app.use("/api/user", authRoutes)
 app.use("/api/admin", adminRoutes)
 
