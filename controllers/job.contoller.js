@@ -28,7 +28,7 @@ module.exports = {
         //     }
         // }), res)
 
-        jobServices.get
+        res.send(await jobServices.getAllJob({ hiringManager: req.userEmail }))
     },
     getAJobForManager: (req, res) => {
         jobDRY(jobServices.getAJob(req.params.id), res)
